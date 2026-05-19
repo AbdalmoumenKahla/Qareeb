@@ -1,6 +1,7 @@
 package com.qareeb.project.services.servicesImpl;
 
 import com.qareeb.project.dto.AuthResponse;
+import com.qareeb.project.dto.CreateUserRequest;
 import com.qareeb.project.dto.LoginRequest;
 import com.qareeb.project.exceptions.ResourceNotFoundException;
 import com.qareeb.project.models.User;
@@ -41,6 +42,34 @@ public class AuthServiceImpl implements AuthService {
                 .userId(user.getId())
                 .name(user.getName())
                 .phoneNumber(user.getPhoneNumber())
+                .build();
+    }
+    @Override
+    public AuthResponse register(CreateUserRequest request) {
+
+        boolean exists = userRepository
+                .findByPhoneNumber(request.getPhoneNumber())
+                .isPresent();
+
+        if (exists) {
+            throw new RuntimeException("Phone number already exists");
+        }
+
+        User user = User.builder()
+                .name(request.getName())
+                .phoneNumber(request.getPhoneNumber())
+                .password(passwordEncoder.encode(request.getPassword()))
+                .build();
+
+        User savedUser = userRepository.save(user);
+
+        String token = jwtService.generateToken(savedUser);
+
+        return AuthResponse.builder()
+                .token(token)
+                .userId(savedUser.getId())
+                .name(savedUser.getName())
+                .phoneNumber(savedUser.getPhoneNumber())
                 .build();
     }
 }

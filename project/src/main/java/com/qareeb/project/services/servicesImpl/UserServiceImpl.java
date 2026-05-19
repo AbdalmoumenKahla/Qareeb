@@ -39,6 +39,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public long getTotalUsers() {
+        return userRepository.count();
+    }
+
+    @Override
     public List<UserResponse> getAllUsers() {
         return userRepository.findAll()
                 .stream()

@@ -1,6 +1,7 @@
 package com.qareeb.project.controllers;
 
 import com.qareeb.project.dto.AuthResponse;
+import com.qareeb.project.dto.CreateUserRequest;
 import com.qareeb.project.dto.LoginRequest;
 import com.qareeb.project.services.AuthService;
 import lombok.RequiredArgsConstructor;
@@ -22,4 +23,12 @@ public class AuthController {
                 authService.login(request)
         );
     }
+    @PostMapping("/register")
+    public ResponseEntity<AuthResponse> register(
+            @RequestBody CreateUserRequest request){
+        return ResponseEntity.ok(
+                authService.register(request)
+        );
+    }
+
 }

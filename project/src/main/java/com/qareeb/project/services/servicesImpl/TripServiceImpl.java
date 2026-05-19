@@ -3,6 +3,7 @@ package com.qareeb.project.services.servicesImpl;
 import com.qareeb.project.dto.CreateTripRequest;
 import com.qareeb.project.dto.TripResponse;
 import com.qareeb.project.enums.TripStatus;
+import com.qareeb.project.enums.TripType;
 import com.qareeb.project.exceptions.ResourceNotFoundException;
 import com.qareeb.project.mappers.TripMapper;
 import com.qareeb.project.models.Trip;
@@ -58,7 +59,15 @@ public class TripServiceImpl implements TripService {
 
         return TripMapper.toDTO(trip);
     }
+    @Override
+    public long getRequestCount() {
+        return tripRepository.countByType(TripType.REQUEST);
+    }
 
+    @Override
+    public long getOfferCount() {
+        return tripRepository.countByType(TripType.OFFER);
+    }
     @Override
     public void deleteTrip(Long id) {
         if (!tripRepository.existsById(id)) {

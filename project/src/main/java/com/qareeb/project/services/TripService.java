@@ -14,5 +14,9 @@ public interface TripService {
 
     TripResponse getTripById(Long id);
 
+    long getRequestCount();
+
+    long getOfferCount();
+
     void deleteTrip(Long id);
 }
