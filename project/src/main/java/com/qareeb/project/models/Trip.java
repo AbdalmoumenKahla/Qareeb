@@ -32,9 +32,6 @@ public class Trip {
     @Column(nullable = false)
     private String destinationLocation;
 
-    @Column(nullable = false)
-    private Double price;
-
     @CreationTimestamp
     @Column(updatable = false)
     private LocalDateTime createdAt;

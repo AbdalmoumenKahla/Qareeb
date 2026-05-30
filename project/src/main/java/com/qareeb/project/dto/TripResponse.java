@@ -16,10 +16,8 @@ public class TripResponse {
     private String description;
     private String pickupLocation;
     private String destinationLocation;
-    private Double price;
     private TripStatus status;
     private LocalDateTime createdAt;
-
     private Long userId;
     private String userName;
 }

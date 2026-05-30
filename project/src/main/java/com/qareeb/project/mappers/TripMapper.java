@@ -13,7 +13,6 @@ public class TripMapper {
                 .description(trip.getDescription())
                 .pickupLocation(trip.getPickupLocation())
                 .destinationLocation(trip.getDestinationLocation())
-                .price(trip.getPrice())
                 .status(trip.getStatus())
                 .createdAt(trip.getCreatedAt())
                 .userId(trip.getUser().getId())

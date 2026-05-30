@@ -25,10 +25,6 @@ public class CreateTripRequest {
             message = "Destination location must be between 2 and 100 characters")
     private String destinationLocation;
 
-    @NotNull(message = "Price is required")
-    @Positive(message = "Price must be greater than 0")
-    private Double price;
-
     @NotNull(message = "User ID is required")
     @Positive(message = "User ID must be positive")
     private Long userId;

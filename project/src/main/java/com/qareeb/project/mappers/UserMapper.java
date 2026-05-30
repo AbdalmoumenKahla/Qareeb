@@ -11,7 +11,6 @@ public class UserMapper {
                 .id(user.getId())
                 .name(user.getName())
                 .phoneNumber(user.getPhoneNumber())
-                .rank(user.getRank())
                 .build();
     }
 }

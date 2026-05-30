@@ -35,7 +35,6 @@ public class TripServiceImpl implements TripService {
                 .description(request.getDescription())
                 .pickupLocation(request.getPickupLocation())
                 .destinationLocation(request.getDestinationLocation())
-                .price(request.getPrice())
                 .status(TripStatus.AVAILABLE)
                 .user(user)
                 .build();
